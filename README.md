@@ -5,8 +5,7 @@ This repository contains examples of using require(), assert(), and revert() sta
 
 ## Description
 
-
-The `ReqAssRev` smart contract is a Solidity-based contract that demonstrates the use of three essential error-handling functions: `require()`, `assert()`, and `revert()`. The `requireEx` function utilizes the `require()` statement to ensure that the input `_amount` is greater than 10, providing a safeguard for input validation. The `assertEx` function employs the `assert()` statement to verify that the result of dividing `_value` by 2 is not zero, which serves as an internal consistency check to catch critical errors during runtime. The `alwaysRevert` function showcases the `revert()` statement, which unconditionally halts execution and reverts any changes made during the transaction, demonstrating a custom error message. Together, these functions illustrate best practices for validating inputs, asserting invariants, and handling exceptional conditions within Solidity smart contracts.
+The `ReqAssRev` contract is a Solidity smart contract designed to demonstrate custom error handling with `require`, `assert`, and `revert` statements. It defines three custom errors: `AmountTooLow`, `InvalidResult`, and `AlwaysReverts`. The `requireEx` function checks if a provided amount is greater than 10, reverting with `AmountTooLow` if not. The `assertEx` function calculates half of a provided value and reverts with `InvalidResult` if the result is zero. The `alwaysRevert` function always reverts with the `AlwaysReverts` error. This contract illustrates how custom errors can provide specific and informative error messages, enhancing debugging and reducing gas costs.
 
 ## Getting started
 ## Executing program

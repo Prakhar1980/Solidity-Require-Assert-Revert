@@ -14,24 +14,37 @@ To run this program, you can use Remix, an online Solidity IDE. To get started, 
 
 Once you are on the Remix website, create a new file by clicking on the "+" icon in the left-hand sidebar. Save the file with a .sol extension (e.g.contract.sol). Copy and paste the following code into the file:
 
+
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.26;
 
 contract ReqAssRev {
-    // Function to demonstrate the use of require()
+ 
+    error AmountTooLow(uint256 amount);
+    error InvalidResult();
+    error AlwaysReverts();
+
+    // Function to demonstrate the use of require() 
     function requireEx(uint256 _amount) external pure {
-        require(_amount > 10, "Amount must be greater than 10");
+        if (_amount <= 10) {
+            revert AmountTooLow(_amount);
+        }
     }
 
-    // Function to demonstrate the use of assert()
+    // Function to demonstrate the use of assert()                  
     function assertEx(uint256 _value) external pure {
-        uint256 RES = _value/2;
-                assert(RES != 0);
+        // Calculate the result
+        uint256 RES = _value / 2;
+
+        if (RES == 0) {
+            revert InvalidResult();
+        }
     }
 
-    // Function to demonstrate the use of revert()
-    function alwaysRevert(uint256 ) external pure {
-        revert("This function always reverts");
+    // Function to demonstrate the use of revert()  
+    function alwaysRevert(uint256) external pure {
+        
+        revert AlwaysReverts();
     }
 }
 
